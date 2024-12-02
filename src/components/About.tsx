@@ -15,7 +15,7 @@ const About = () => {
                     <div className="bg-slate-800 rounded-lg p-8 shadow-xl">
                         <div className="prose prose-invert max-w-none">
                             <p className="text-gray-300 mb-6">
-                                Passionné par le développement web depuis plus de 5 ans, je crée des applications
+                                Passionné par le développement web depuis 2 ans, je crée des applications
                                 web modernes et performantes. Mon approche combine créativité et rigueur technique
                                 pour délivrer des solutions qui dépassent les attentes.
                             </p>
