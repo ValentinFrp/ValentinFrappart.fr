@@ -25,7 +25,10 @@ const Hero = () => {
                         transition={{ delay: 0.5 }}
                         className="text-xl md:text-2xl text-gray-300 mb-8"
                     >
-                        Créateur d'expériences web innovantes
+                        <TextParticles
+                            text="Créateur de solutions web modernes et performantes"
+                            className="h-32 mb-2"
+                        />
                     </motion.p>
                 </motion.div>
 
