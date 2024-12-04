@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # Le workflow se déclenche quand tu pousses sur la branche `main`
+      - main
 
 jobs:
   deploy:
@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16 # Utilise la version de Node.js requise par ton projet
+          node-version: 16
 
       # 3. Installer les dépendances
       - name: Install dependencies
@@ -28,7 +28,11 @@ jobs:
       - name: Build the project
         run: npm run build
 
-      # 5. Déployer sur GitHub Pages
+      # 5. Ajouter le fichier CNAME
+      - name: Add CNAME
+        run: echo 'valfrp-dev.com' > ./dist/CNAME
+
+      # 6. Déployer sur GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
