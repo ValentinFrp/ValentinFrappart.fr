@@ -28,7 +28,7 @@ const Contact = () => {
       setFormState({ name: "", email: "", message: "" });
     } catch (error) {
       console.error("Erreur lors de l'envoi:", error);
-      toast.error("Erreur lors de l'envoi du message. Veuillez réessayer.");
+      toast.error("Erreur lors de l'envoie du message. Veuillez réessayer.");
     } finally {
       setIsSubmitting(false);
     }
