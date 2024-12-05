@@ -1,17 +1,11 @@
 import { motion } from "framer-motion";
 import { Send, Mail, Phone, MapPin } from "lucide-react";
 import React, { useState } from "react";
-import { toast, Toaster } from "react-hot-toast";
-import { sendEmail } from "../utils/email";
-
-interface FormState {
-  name: string;
-  email: string;
-  message: string;
-}
+import { toast } from "react-hot-toast";
+import { sendEmail, isEmailConfigured } from "../utils/email";
 
 const Contact = () => {
-  const [formState, setFormState] = useState<FormState>({
+  const [formState, setFormState] = useState({
     name: "",
     email: "",
     message: "",
@@ -20,6 +14,12 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!isEmailConfigured()) {
+      toast.error("Le formulaire de contact est temporairement indisponible.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -27,6 +27,7 @@ const Contact = () => {
       toast.success("Message envoyé avec succès!");
       setFormState({ name: "", email: "", message: "" });
     } catch (error) {
+      console.error("Erreur lors de l'envoi:", error);
       toast.error("Erreur lors de l'envoi du message. Veuillez réessayer.");
     } finally {
       setIsSubmitting(false);
@@ -46,7 +47,6 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-20 bg-slate-800/50">
-      <Toaster position="bottom-right" />
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}
@@ -73,19 +73,20 @@ const Contact = () => {
             </p>
 
             <div className="space-y-6">
-              <motion.div
+              <motion.a
+                href="mailto:valentinn.frappart@gmail.com"
                 className="flex items-center text-gray-300 group"
                 whileHover={{ x: 5 }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Mail className="mr-4 text-blue-500 group-hover:scale-110 transition-transform" />
-                <a
-                  href="mailto:valentinn.frappart@gmail.com"
-                  className="group-hover:text-white transition-colors"
-                >
+                <span className="group-hover:text-white transition-colors">
                   valentinn.frappart@gmail.com
-                </a>
-              </motion.div>
-              <motion.div
+                </span>
+              </motion.a>
+              <motion.a
+                href="tel:+33606668955"
                 className="flex items-center text-gray-300 group"
                 whileHover={{ x: 5 }}
               >
@@ -93,7 +94,7 @@ const Contact = () => {
                 <span className="group-hover:text-white transition-colors">
                   +33 6 06 66 89 55
                 </span>
-              </motion.div>
+              </motion.a>
               <motion.div
                 className="flex items-center text-gray-300 group"
                 whileHover={{ x: 5 }}
