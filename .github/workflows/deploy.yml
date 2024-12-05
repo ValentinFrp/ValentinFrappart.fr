@@ -1,44 +1,45 @@
-name: Deploy to GitHub Pages
+name: Deploy Portfolio
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
-      # 1. Checkout du code source
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Installer Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
+          cache: "npm"
 
-      # 3. Installer les dépendances
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      # 4. Construire le projet
-      - name: Build the project
+      - name: Build
         env:
           VITE_EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
           VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
           VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
         run: npm run build
 
-      # 5. Ajouter le fichier CNAME
       - name: Add CNAME
         run: echo 'valfrp-dev.com' > ./dist/CNAME
 
-      # 6. Déployer sur GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          commit_message: "Deploy: ${{ github.event.head_commit.message }}"
+          full_commit_message: "Deploy: ${{ github.event.head_commit.message }}"
+          enable_jekyll: false
+          cname: valfrp-dev.com
