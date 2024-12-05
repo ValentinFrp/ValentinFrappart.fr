@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Send, Mail, Phone, MapPin } from "lucide-react";
 import React, { useState } from "react";
-import { toast } from "react-hot-toast";
 import { sendEmail, isEmailConfigured } from "../utils/email";
+import { showToast } from "./ui/Toast";
 
 const Contact = () => {
   const [formState, setFormState] = useState({
@@ -16,7 +16,9 @@ const Contact = () => {
     e.preventDefault();
 
     if (!isEmailConfigured()) {
-      toast.error("Le formulaire de contact est temporairement indisponible.");
+      showToast.error(
+        "Le formulaire de contact est temporairement indisponible. Veuillez réessayer plus tard.",
+      );
       return;
     }
 
@@ -24,11 +26,15 @@ const Contact = () => {
 
     try {
       await sendEmail(formState);
-      toast.success("Message envoyé avec succès!");
+      showToast.success(
+        "Votre message a été envoyé avec succès! Je vous répondrai dans les plus brefs délais.",
+      );
       setFormState({ name: "", email: "", message: "" });
     } catch (error) {
       console.error("Erreur lors de l'envoi:", error);
-      toast.error("Erreur lors de l'envoi du message. Veuillez réessayer.");
+      showToast.error(
+        "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer ou me contacter directement par email.",
+      );
     } finally {
       setIsSubmitting(false);
     }
