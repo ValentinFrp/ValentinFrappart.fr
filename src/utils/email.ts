@@ -14,24 +14,19 @@ interface EmailConfig {
 }
 
 const getEmailConfig = (): EmailConfig | null => {
-  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID?.trim();
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID?.trim();
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY?.trim();
 
-  console.log("Environment Variables:", {
-    VITE_EMAILJS_SERVICE_ID: import.meta.env.VITE_EMAILJS_SERVICE_ID,
-    VITE_EMAILJS_TEMPLATE_ID: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-    VITE_EMAILJS_PUBLIC_KEY: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-    NODE_ENV: import.meta.env.MODE,
-    BASE_URL: import.meta.env.BASE_URL,
+  // Debug logs
+  console.log("EmailJS Config:", {
+    serviceId,
+    templateId,
+    hasPublicKey: !!publicKey,
   });
 
   if (!serviceId || !templateId || !publicKey) {
-    console.warn("EmailJS configuration is missing:", {
-      hasServiceId: !!serviceId,
-      hasTemplateId: !!templateId,
-      hasPublicKey: !!publicKey,
-    });
+    console.warn("EmailJS configuration is missing");
     return null;
   }
 
@@ -44,9 +39,6 @@ const getEmailConfig = (): EmailConfig | null => {
 
 export const isEmailConfigured = (): boolean => {
   const config = getEmailConfig();
-  console.log("EmailJS configuration status:", {
-    isConfigured: config !== null,
-  });
   return config !== null;
 };
 
@@ -55,16 +47,11 @@ export const initEmailJS = () => {
   if (config) {
     try {
       emailjs.init(config.publicKey);
-      console.log(
-        "EmailJS initialized successfully with public key:",
-        config.publicKey,
-      );
+      console.log("EmailJS initialized successfully");
     } catch (error) {
       console.error("Failed to initialize EmailJS:", error);
       toast.error("Erreur d'initialisation du service de contact");
     }
-  } else {
-    console.warn("EmailJS initialization skipped - missing configuration");
   }
 };
 
@@ -72,8 +59,7 @@ export const sendEmail = async (data: EmailData): Promise<void> => {
   const config = getEmailConfig();
 
   if (!config) {
-    console.error("Attempted to send email without configuration");
-    throw new Error("EmailJS configuration is missing");
+    throw new Error("Configuration EmailJS manquante");
   }
 
   try {
@@ -92,29 +78,17 @@ export const sendEmail = async (data: EmailData): Promise<void> => {
       }),
     };
 
-    console.log("Attempting to send email with params:", {
-      serviceId: config.serviceId,
-      templateId: config.templateId,
-      templateParams,
-    });
-
     const response = await emailjs.send(
       config.serviceId,
       config.templateId,
       templateParams,
     );
 
-    console.log("Email sent successfully:", response);
-  } catch (error: any) {
-    console.error("Failed to send email:", {
-      error,
-      errorText: error.text,
-      errorStack: error.stack,
-    });
-
-    if (error.text) {
-      throw new Error(`EmailJS Error: ${error.text}`);
+    if (response.status !== 200) {
+      throw new Error("Échec de l'envoi");
     }
-    throw error;
+  } catch (error: any) {
+    console.error("Erreur lors de l'envoi:", error);
+    throw new Error(error.text || "Erreur lors de l'envoi du message");
   }
 };
