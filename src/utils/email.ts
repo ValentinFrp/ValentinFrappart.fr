@@ -1,4 +1,5 @@
 import emailjs from "emailjs-com";
+import toast from "react-hot-toast";
 
 interface EmailData {
   name: string;
@@ -17,12 +18,19 @@ const getEmailConfig = (): EmailConfig | null => {
   const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+  console.log("Environment Variables:", {
+    VITE_EMAILJS_SERVICE_ID: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+    VITE_EMAILJS_TEMPLATE_ID: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+    VITE_EMAILJS_PUBLIC_KEY: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+    NODE_ENV: import.meta.env.MODE,
+    BASE_URL: import.meta.env.BASE_URL,
+  });
+
   if (!serviceId || !templateId || !publicKey) {
-    console.warn("EmailJS configuration is missing");
-    console.log("Available env vars:", {
-      serviceId,
-      templateId,
-      publicKey,
+    console.warn("EmailJS configuration is missing:", {
+      hasServiceId: !!serviceId,
+      hasTemplateId: !!templateId,
+      hasPublicKey: !!publicKey,
     });
     return null;
   }
@@ -35,7 +43,11 @@ const getEmailConfig = (): EmailConfig | null => {
 };
 
 export const isEmailConfigured = (): boolean => {
-  return getEmailConfig() !== null;
+  const config = getEmailConfig();
+  console.log("EmailJS configuration status:", {
+    isConfigured: config !== null,
+  });
+  return config !== null;
 };
 
 export const initEmailJS = () => {
@@ -43,10 +55,16 @@ export const initEmailJS = () => {
   if (config) {
     try {
       emailjs.init(config.publicKey);
-      console.log("EmailJS initialized successfully");
+      console.log(
+        "EmailJS initialized successfully with public key:",
+        config.publicKey,
+      );
     } catch (error) {
       console.error("Failed to initialize EmailJS:", error);
+      toast.error("Erreur d'initialisation du service de contact");
     }
+  } else {
+    console.warn("EmailJS initialization skipped - missing configuration");
   }
 };
 
@@ -54,6 +72,7 @@ export const sendEmail = async (data: EmailData): Promise<void> => {
   const config = getEmailConfig();
 
   if (!config) {
+    console.error("Attempted to send email without configuration");
     throw new Error("EmailJS configuration is missing");
   }
 
@@ -73,10 +92,10 @@ export const sendEmail = async (data: EmailData): Promise<void> => {
       }),
     };
 
-    console.log("Sending email with config:", {
+    console.log("Attempting to send email with params:", {
       serviceId: config.serviceId,
       templateId: config.templateId,
-      hasPublicKey: !!config.publicKey,
+      templateParams,
     });
 
     const response = await emailjs.send(
@@ -85,13 +104,14 @@ export const sendEmail = async (data: EmailData): Promise<void> => {
       templateParams,
     );
 
-    if (response.status !== 200) {
-      throw new Error(`Email send failed with status: ${response.status}`);
-    }
-
     console.log("Email sent successfully:", response);
   } catch (error: any) {
-    console.error("Failed to send email:", error);
+    console.error("Failed to send email:", {
+      error,
+      errorText: error.text,
+      errorStack: error.stack,
+    });
+
     if (error.text) {
       throw new Error(`EmailJS Error: ${error.text}`);
     }
