@@ -18,13 +18,6 @@ const getEmailConfig = (): EmailConfig | null => {
   const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID?.trim();
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY?.trim();
 
-  // Debug logs
-  console.log("EmailJS Config:", {
-    serviceId,
-    templateId,
-    hasPublicKey: !!publicKey,
-  });
-
   if (!serviceId || !templateId || !publicKey) {
     console.warn("EmailJS configuration is missing");
     return null;
