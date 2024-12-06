@@ -18,13 +18,13 @@ function App() {
       description:
         "Plateforme de trading algorithmique avec visualisation en temps réel, gestion des ordres et analyse avancée.",
       image:
-        "https://plus.unsplash.com/premium_vector-1726217949142-be7620807c94?q=80&w=2360&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1640340434855-6084b1f4901c?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       technologies: ["React", "Typescript", "C++", "Go"],
       githubUrl: "https://github.com/ValentinFrp/TradinAlgo",
       liveUrl: "https://demo.com",
     },
     {
-      title: "Application de Gestion",
+      title: "Système de Gestion de Projet Full-Stack",
       description:
         "Dashboard administratif pour la gestion des ressources d'entreprise",
       image:
