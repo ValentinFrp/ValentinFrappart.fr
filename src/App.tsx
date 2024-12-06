@@ -29,8 +29,8 @@ function App() {
         "Dashboard administratif pour la gestion des ressources d'entreprise",
       image:
         "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80",
-      technologies: ["Vue.js", "Express", "PostgreSQL", "Docker"],
-      githubUrl: "https://github.com",
+      technologies: ["Vue.js", "Laravel", "Go"],
+      githubUrl: "https://github.com/ValentinFrp/ProjectManagement",
       liveUrl: "https://demo.com",
     },
     {
