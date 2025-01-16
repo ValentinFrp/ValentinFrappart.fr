@@ -26,7 +26,7 @@ const Hero = () => {
                         className="text-xl md:text-2xl text-gray-300 mb-8"
                     >
                         <TextParticles
-                            text="Créateur de solutions web modernes et performantes"
+                            text="Créateur de solutions web"
                             className="h-32 mb-2"
                         />
                     </motion.p>
