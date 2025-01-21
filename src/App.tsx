@@ -34,11 +34,11 @@ function App() {
       liveUrl: "https://demo.com",
     },
     {
-      title: "Application Mobile",
-      description: "Application mobile de suivi fitness et nutrition",
+      title: "",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?auto=format&fit=crop&q=80",
-      technologies: ["React Native", "Firebase", "Redux"],
+      technologies: ["", "", "", ""],
       githubUrl: "https://github.com",
       liveUrl: "https://demo.com",
     },
