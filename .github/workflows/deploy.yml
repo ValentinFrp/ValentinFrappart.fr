@@ -20,25 +20,28 @@ jobs:
         with:
           node-version: 18
           cache: "npm"
+          cache-dependency-path: Portfolio/package-lock.json
 
       - name: Install dependencies
+        working-directory: Portfolio
         run: npm ci
 
       - name: Build
+        working-directory: Portfolio
         env:
           VITE_EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
           VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
           VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
         run: npm run build
 
-      - name: Add CNAME
-        run: echo 'valfrp-dev.com' > ./dist/CNAME
+      - name: Copy CNAME
+        run: cp CNAME ./Portfolio/dist/CNAME
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./Portfolio/dist
           commit_message: "Deploy: ${{ github.event.head_commit.message }}"
           full_commit_message: "Deploy: ${{ github.event.head_commit.message }}"
           enable_jekyll: false
