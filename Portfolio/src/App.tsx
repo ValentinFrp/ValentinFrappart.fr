@@ -25,6 +25,8 @@ import {
   prefersReducedMotion,
 } from "./utils/seo";
 
+import mlopsImage from "../assets/ImageMlOps.png";
+
 const personalInfo = {
   name: "Valentin Frappart",
   title: "SOFTWARE ENGINEER.",
@@ -88,7 +90,7 @@ const projects = [
       "Scikit-learn",
       "Pandas/Numpy",
     ],
-    image: "../assets/ImageMlOps.png",
+    image: mlopsImage,
     link: "#",
     github: "https://github.com/ValentinFrp/APIMLCloud",
     category: "MLOPS",
