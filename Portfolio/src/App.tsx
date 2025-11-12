@@ -27,6 +27,9 @@ import {
 
 import mlopsImage from "../assets/ImageMlOps.png";
 import lotaImage from "../assets/LogoLotaCloud.png";
+import restApi from "../assets/RestApi.png";
+import dataDrift from "../assets/DataDrift.png";
+import automatedCicd from "../assets/automatedcicd.png";
 
 const personalInfo = {
   name: "Valentin Frappart",
@@ -97,31 +100,47 @@ const projects = [
     category: "MLOPS",
   },
   {
-    title: "",
-    description: "",
-    technologies: [],
-    image: "",
-    link: "",
-    github: "#",
-    category: "",
+    title: "Automated CI/CD for Dockerized Backend",
+    description:
+      "Implementation of a CI/CD pipeline (GitHub Actions) to automate testing, code quality checks (linting), and the building of a Docker image for a backend service, ensuring reliable delivery.",
+    technologies: [
+      "GitHub Actions",
+      "Docker",
+      "Pytest",
+      "FastAPI",
+      "Go",
+      "Linters",
+    ],
+    image: automatedCicd,
+    link: "#",
+    github: "https://github.com/ValentinFrp/CICDBackend",
+    category: "DEVOPS",
   },
   {
-    title: "",
-    description: "",
-    technologies: [],
-    image: "",
+    title: "Secure REST API with Go/Rust & Clean Architecture",
+    description:
+      "Development of a secure User Authentication REST API using Go or Rust, implementing Clean Architecture principles (ports & adapters) and utilizing JWT for protected route access.",
+    technologies: [
+      "Go / Rust",
+      "JWT",
+      "Clean Architecture",
+      "SQLite",
+      "Hashing",
+    ],
+    image: restApi,
     link: "#",
-    github: "#",
-    category: "",
+    github: "https://github.com/ValentinFrp/SecureGoAPI",
+    category: "BACKEND",
   },
   {
-    title: "",
-    description: "",
-    technologies: [],
-    image: "",
+    title: "Data Drift Detection & Monitoring Dashboard",
+    description:
+      "A local observability tool using open-source libraries (Evidently AI) to compare data distributions and detect Data Drift and model performance degradation between training and simulated production data.",
+    technologies: ["Evidently AI", "Pandas/Numpy", "Python", "Streamlit"],
+    image: dataDrift,
     link: "#",
-    github: "#",
-    category: "",
+    github: "https://github.com/ValentinFrp/DataMonitoringTool",
+    category: "MONITORING",
   },
 ];
 
