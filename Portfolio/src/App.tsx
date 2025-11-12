@@ -117,7 +117,7 @@ const projects = [
       "Scikit-learn",
       "Pandas/Numpy",
     ],
-    image: "./assets/images/mlops.png",
+    image: "./assets/ImageMlOps.png",
     link: "#",
     github: "https://github.com/ValentinFrp/APIMLCloud",
     category: "DevOps",
