@@ -47,10 +47,9 @@ const expertise = [
   },
   {
     icon: <Code className="w-12 h-12 text-white" />,
-    title: "Frontend Dev",
-    subtitle: "React, NextJS",
-    description:
-      "Passionate about UI/UX. Over 5 years of development experience in HTML, CSS, JS, React and NextJS frameworks.",
+    title: "MLOPS",
+    subtitle: "FastAPI, Scikit-learn, CI/CD, Docker",
+    description: "",
   },
   {
     icon: <FlutterLogo className="w-12 h-12 text-white" />,
@@ -105,21 +104,20 @@ const projects = [
     category: "Mobile App",
   },
   {
-    title: "DevOps Automation Pipeline",
+    title: "MLOPS Pipeline",
     description:
-      "CI/CD pipeline with automated testing, deployment, and monitoring using modern DevOps tools and cloud infrastructure.",
+      "A machine learning-based real estate price prediction API, deployable on the cloud with automated CI/CD..",
     technologies: [
       "Docker",
-      "Kubernetes",
-      "Jenkins",
-      "AWS",
-      "Terraform",
-      "Monitoring",
+      "uvicorn",
+      "FastAPI",
+      "Pydantic",
+      "Scikit-learn",
+      "Pandas/Numpy",
     ],
-    image:
-      "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=400&h=250&auto=format&fit=crop",
+    image: "./assets/images/mlops.png",
     link: "#",
-    github: "#",
+    github: "https://github.com/ValentinFrp/APIMLCloud",
     category: "DevOps",
   },
   {
