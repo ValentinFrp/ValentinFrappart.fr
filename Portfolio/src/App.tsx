@@ -129,7 +129,7 @@ const projects = [
     ],
     image: restApi,
     link: "#",
-    github: "https://github.com/ValentinFrp/SecureGoAPI",
+    github: "https://github.com/ValentinFrp/SecureRestApi",
     category: "BACKEND",
   },
   {
@@ -139,7 +139,7 @@ const projects = [
     technologies: ["Evidently AI", "Pandas/Numpy", "Python", "Streamlit"],
     image: dataDrift,
     link: "#",
-    github: "https://github.com/ValentinFrp/DataMonitoringTool",
+    github: "https://github.com/ValentinFrp/DataDriftDetection",
     category: "MONITORING",
   },
 ];
