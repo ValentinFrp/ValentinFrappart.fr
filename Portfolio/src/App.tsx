@@ -113,7 +113,7 @@ const projects = [
     ],
     image: automatedCicd,
     link: "#",
-    github: "https://github.com/ValentinFrp/CICDBackend",
+    github: "https://github.com/ValentinFrp/DockerizedBackend",
     category: "DEVOPS",
   },
   {
