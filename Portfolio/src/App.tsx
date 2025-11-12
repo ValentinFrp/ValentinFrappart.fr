@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback, Suspense } from "react";
 import {
   Monitor,
+  Workflow,
   Code,
-  BatteryLow as FlutterLogo,
   ArrowUp,
   MapPin,
   Link2,
@@ -26,10 +26,11 @@ import {
 } from "./utils/seo";
 
 import mlopsImage from "../assets/ImageMlOps.png";
+import lotaImage from "../assets/LogoLotaCloud.png";
 
 const personalInfo = {
   name: "Valentin Frappart",
-  title: "SOFTWARE ENGINEER.",
+  title: "SOFTWARE ENGINEER | MLOPS",
   location: "Lille, France",
   email: "valentinn.frappart@gmail.com",
   social: {
@@ -49,18 +50,18 @@ const expertise = [
       "Experienced in both functional and OOP: C++, Python, Rust, Go",
   },
   {
-    icon: <Code className="w-12 h-12 text-white" />,
+    icon: <Workflow className="w-12 h-12 text-white" />,
     title: "MLOPS",
     subtitle: "FastAPI, Scikit-learn, CI/CD, Docker, Pandas/Numpy",
     description:
       "Learning MLOPS using FastAPI, Scikit-learn, Pandas/Numpy, CI/CD, and Docker.",
   },
   {
-    icon: <FlutterLogo className="w-12 h-12 text-white" />,
+    icon: <Code className="w-12 h-12 text-white" />,
     title: "Backend Dev",
     subtitle: "Laravel, PHP, NestJS, Rust, Go",
     description:
-      "Skilled in backend development using Laravel, PHP, NestJS, Rust, and Go.",
+      "Skilled in backend development using Laravel, PHP, NestJS, Rust, and Go.Using hexagonal architecture and clean code principles.",
   },
 ];
 
@@ -72,8 +73,8 @@ const experiences = [
     website: "https://lota.cloud",
     description:
       "During my 4-month internship, I worked mainly on the backend on the integration of a chat for users on the application.",
-    technologies: ["Backend", "Frontend", "Laraval", "PHP", "Vue.js"],
-    logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=100&h=100&auto=format&fit=crop",
+    technologies: ["Backend", "Frontend", "Laravel", "PHP", "Vue.js"],
+    logo: lotaImage,
   },
 ];
 
@@ -174,12 +175,12 @@ function App() {
     updateSEO({
       title: "Valentin Frappart - Software Engineer Portfolio",
       description:
-        "Software Engineer specializing in React, Flutter, and Full-Stack Development. Explore my projects and expertise in JavaScript, TypeScript, Python, and modern web technologies.",
+        "Software Engineer specializing in React, MlOps, and Full-Stack Development. Explore my projects and expertise in JavaScript, TypeScript, Python, and modern web technologies.",
       keywords: [
         "Valentin Frappart",
         "Software Engineer",
         "React Developer",
-        "Flutter Developer",
+        "MlOps Engineer",
         "Full-Stack Developer",
       ],
       url: window.location.href,
@@ -190,7 +191,7 @@ function App() {
       "@type": "Person",
       name: personalInfo.name,
       description:
-        "Software Engineer specializing in React, Flutter, and Full-Stack Development",
+        "Software Engineer specializing in React, MlOps, and Full-Stack Development",
       url: window.location.href,
       sameAs: [personalInfo.social.linkedin, personalInfo.social.github].filter(
         (link) => link !== "#",
@@ -309,19 +310,20 @@ function App() {
             }
           >
             <p className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              Crafting exceptional digital experiences with
+              As a Software Engineer, I design high-performance, scalable
+              systems utilizing
               <span className="text-purple-400 font-semibold">
                 {" "}
-                modern technologies
+                modern software architectures
               </span>{" "}
-              and
+              and best-in-class
               <span className="text-blue-400 font-semibold">
                 {" "}
-                innovative solutions
+                DevOps/MLOps practices
               </span>
               .
-              <br />
-              From concept to deployment, I bring your ideas to life.
+              <br />I ensure quality and robustness, from source code to
+              production deployment.
             </p>
           </div>
 
@@ -531,7 +533,6 @@ function App() {
               </span>
             </p>
 
-            {/* Email CTA */}
             <div className="mb-12 p-8 rounded-2xl bg-gradient-to-r from-purple-900/30 to-blue-900/30 backdrop-blur-sm border border-purple-500/20">
               <h3 className="text-2xl font-semibold mb-4 text-purple-300">
                 Ready to start?
