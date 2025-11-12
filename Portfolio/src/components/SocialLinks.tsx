@@ -103,7 +103,6 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
             {/* Background glow effect */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-            {/* Icon */}
             <div className="relative z-10 transform group-hover:rotate-12 transition-transform duration-300">
               {link.icon}
             </div>

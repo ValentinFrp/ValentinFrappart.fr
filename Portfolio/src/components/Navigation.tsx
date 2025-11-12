@@ -51,17 +51,18 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
       >
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
-            {/* Logo */}
             <div className="font-mono text-xl">
               <button
                 onClick={() => handleNavClick("home")}
                 className="focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-transparent rounded"
                 aria-label="Go to home section"
               >
-                <span className="text-white">ValentinFrp</span>
+                <span className="text-white">PORTFOLIO</span>
                 <span
                   className={`transition-colors duration-300 ${
-                    activeSection === "home" ? "text-purple-500" : "text-purple-500"
+                    activeSection === "home"
+                      ? "text-purple-500"
+                      : "text-purple-500"
                   }`}
                 >
                   ._
