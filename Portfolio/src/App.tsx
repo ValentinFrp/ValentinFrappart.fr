@@ -42,14 +42,16 @@ const expertise = [
   {
     icon: <Monitor className="w-12 h-12 text-white" />,
     title: "Software Development",
+    subtitle: "C++, Python, Rust, Go",
     description:
-      "Experienced in both functional and OOP: C++, Python, Rust, JavaScript, TypeScript.",
+      "Experienced in both functional and OOP: C++, Python, Rust, Go",
   },
   {
     icon: <Code className="w-12 h-12 text-white" />,
     title: "MLOPS",
-    subtitle: "FastAPI, Scikit-learn, CI/CD, Docker",
-    description: "",
+    subtitle: "FastAPI, Scikit-learn, CI/CD, Docker, Pandas/Numpy",
+    description:
+      "Learning MLOPS using FastAPI, Scikit-learn, Pandas/Numpy, CI/CD, and Docker.",
   },
   {
     icon: <FlutterLogo className="w-12 h-12 text-white" />,
