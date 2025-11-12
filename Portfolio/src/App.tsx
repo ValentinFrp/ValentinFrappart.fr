@@ -77,35 +77,6 @@ const experiences = [
 
 const projects = [
   {
-    title: "Life Coach Elevate Platform",
-    description:
-      "Full-stack web application for life coaching services with advanced booking system, payment integration, and real-time communication features.",
-    technologies: [
-      "React",
-      "Node.js",
-      "TypeScript",
-      "PostgreSQL",
-      "Stripe",
-      "WebSocket",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=400&h=250&auto=format&fit=crop",
-    link: "https://lifecoachelevate.com",
-    github: "#",
-    category: "Full-Stack Web App",
-  },
-  {
-    title: "Cross-Platform Mobile App",
-    description:
-      "Flutter mobile application with offline capabilities, real-time synchronization, and modern UI/UX design following Material Design principles.",
-    technologies: ["Flutter", "Dart", "Firebase", "SQLite", "Provider"],
-    image:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=400&h=250&auto=format&fit=crop",
-    link: "#",
-    github: "#",
-    category: "Mobile App",
-  },
-  {
     title: "MLOPS Pipeline",
     description:
       "A machine learning-based real estate price prediction API, deployable on the cloud with automated CI/CD..",
@@ -120,25 +91,34 @@ const projects = [
     image: "../assets/ImageMlOps.png",
     link: "#",
     github: "https://github.com/ValentinFrp/APIMLCloud",
-    category: "DevOps",
+    category: "MLOPS",
   },
   {
-    title: "E-commerce Platform",
-    description:
-      "Modern e-commerce solution with advanced search, recommendation engine, and integrated payment processing.",
-    technologies: [
-      "Next.js",
-      "Python",
-      "Django",
-      "Redis",
-      "PostgreSQL",
-      "Elasticsearch",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=400&h=250&auto=format&fit=crop",
+    title: "",
+    description: "",
+    technologies: [],
+    image: "",
+    link: "",
+    github: "#",
+    category: "",
+  },
+  {
+    title: "",
+    description: "",
+    technologies: [],
+    image: "",
     link: "#",
     github: "#",
-    category: "E-commerce",
+    category: "",
+  },
+  {
+    title: "",
+    description: "",
+    technologies: [],
+    image: "",
+    link: "#",
+    github: "#",
+    category: "",
   },
 ];
 
