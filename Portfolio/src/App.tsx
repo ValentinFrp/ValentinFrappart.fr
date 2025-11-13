@@ -75,7 +75,7 @@ const experiences = [
     location: "Lille, France",
     website: "https://lota.cloud",
     description:
-      "During my 4-month internship, I worked mainly on the backend on the integration of a chat for users on the application.",
+      "During my 4-month internship, I worked primarily on backend development, integrating a real-time messaging system for end users into the existing application. (Laravel, PHP)",
     technologies: ["Backend", "Frontend", "Laravel", "PHP", "Vue.js"],
     logo: lotaImage,
   },
