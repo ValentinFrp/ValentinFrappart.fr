@@ -64,7 +64,7 @@ const expertise = [
     title: "Backend Dev",
     subtitle: "Laravel, PHP, NestJS, Rust, Go",
     description:
-      "Skilled in backend development using Laravel, PHP, NestJS, Rust, and Go.Using hexagonal architecture and clean code principles.",
+      "Skilled in backend development using Laravel, PHP, NestJS, Rust, and Go. Using hexagonal architecture and clean code principles.",
   },
 ];
 
